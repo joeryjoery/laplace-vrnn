@@ -27,7 +27,7 @@ with open('README.md') as f:
 
 
 setup(
-    name='lvrnn',
+    name='laplace-vrnn',
     version=__version__,
     description='Research Code for Laplace Variational RNNs.',
     long_description=long_desc,
@@ -37,7 +37,7 @@ setup(
     keywords='reinforcement-learning python machine learning jax',
     packages=find_packages(),
     package_data={'lvrnn': ['py.typed']},
-    url='https://github.com/joeryjoery/lvrnn',
+    url='https://github.com/joeryjoery/laplace-vrnn',
     license='MIT',
     python_requires='>=3.9',
     install_requires=_req,
