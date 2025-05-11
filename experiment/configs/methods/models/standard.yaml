@@ -1,0 +1,9 @@
+model:
+  desc: Namespace for configuring parameters for the agent-model (e.g., Neural-Network Architecture).
+
+  variational_method:
+    desc: Choose the parameterization method for the variational distribution
+    value: ConstantVarianceVariationalRNN
+  variational_kwargs:
+    desc: Variational distribution specific hyperparameters
+    value: { 'features': 64, 'prior_stddev': 1.0 }

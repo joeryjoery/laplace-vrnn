@@ -1,0 +1,12 @@
+method: grid
+parameters:
+  model.variational_method.value:
+    values: [ HistoryLaplaceVRNN ]
+  model.variational_kwargs.value.diagonal:
+    values: [ True, False ]
+  model.variational_kwargs.value.accumulate:
+    values: [ precision, None ]
+  model.variational_kwargs.value.buffer_size:
+    values: [ 1, 10 ]
+  loss.elbo_kwargs.value.beta:
+    values: [ 0.01 ]

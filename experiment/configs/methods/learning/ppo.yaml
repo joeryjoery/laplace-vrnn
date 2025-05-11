@@ -1,0 +1,67 @@
+optimizer:
+  desc: Namespace for configuring optimization of `model` parameters
+  name:
+    desc: What optimizer to use from the `optax` namespace
+    value: adamw
+  learning_rate:
+    desc: Initial learning rate for the optimizer
+    value: 1.0e-3
+  l2_weight_decay:
+    desc: l2 prior variance on the neural network weights
+    value: 1.0e-6
+  max_grad_norm:
+    desc: Maximum gradient norm for clipping
+    value: 1.0
+  max_grad:
+    desc: Maximum absolute value for any gradient element
+    value: 1.0
+
+loss:
+  desc: Namespace for configuring how to optimize `model` parameters
+  elbo:
+    desc: Specify which Evidence Lower BOund implementation to optimize.
+    value: SequentialELBO
+  elbo_kwargs:
+    desc: ELBO implementation specific hyperparameters
+    value: { 'beta': 0.01, num_model_samples: 5 }
+  target_loss:
+    desc: Specify which loss function implementation to use
+    value:
+      - ppo.PPO
+  target_loss_kwargs:
+    desc: Target Loss specific hyperparameters
+    value:
+      -
+        # Which outputs of the model to attend to
+        policy_modality: Policy
+        value_modality: Value
+
+        # Loss Aggregation config
+        policy_scale: 1.0
+        value_scale: 1.0
+        entropy_scale: 0.1
+
+        # Policy-Gradient + Value Loss config
+        td_lambda: 0.9
+        discount: 0.9
+        clip_epsilon: 0.2
+        normalize_advantage: False
+        exact_entropy: True
+
+        # Value-Learning config
+        semi_gradient: True
+
+  target_weights:
+    desc: Weight per Loss
+    value:
+      - 1.0
+  ignore_model_complexity:
+    desc: Whether the model should drop the KL-penalty in optimization.
+    value: False
+  simplify_model_complexity:
+    desc: Whether to simplify the Gaussian KL to the Mahalanobis Distance.
+    value: False
+
+learner:
+  desc: Namespace for configuring the Learning/ Consumer algorithm
+  value: { }

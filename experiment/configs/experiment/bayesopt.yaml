@@ -1,0 +1,45 @@
+rng:
+  desc: Namespace for configuring pseudo-randomness initialization
+  seed:
+    desc: Initialization values to pseudo-random number generators
+    value: 0
+
+experiment:
+  desc: Namespace for configuring experiment settings
+  max_iterations:
+    desc: Number of learning iterations to perform
+    value: 20000
+  checkpoint_period:
+    desc: Log the training-state of the learner every `...` iteration steps
+    value: 5000
+  evaluation_period:
+    desc: Evaluate the current training-state very `...` iteration steps
+    value: 2500
+  eager_evaluation:
+    desc: Whether to run evaluations concurrently or after experiment has finished
+    value: False
+  skip_init_evaluation:
+    desc: Whether to include the zeroth iterate for evaluation
+    value: False
+
+  stream_callback:
+    desc: What callback to use during experiment
+    value: [ nan ]
+
+  save_state_period:
+    desc: Store the experiment meta-data every `...` iterations.
+    value: null
+
+  checkpointer:
+    desc: What method to use for taking snapshots
+    value: [ pickle ]
+  checkpointer_options:
+    desc: Keyword arguments to the checkpointer
+    value: { }
+
+  restore_point:
+    desc: Path to previously stored client-checkpoint file.
+    value: null
+  finetune:
+    desc: Whether to treat a restore point as an experiment starting-point.
+    value: False

@@ -1,0 +1,10 @@
+distrax
+jax
+jaxtyping
+optax
+numpy
+rlax
+wandb
+tqdm
+setuptools
+flax

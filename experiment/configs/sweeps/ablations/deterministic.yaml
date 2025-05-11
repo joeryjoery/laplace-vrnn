@@ -1,0 +1,6 @@
+method: grid
+parameters:
+  model.variational_method.value:
+    values: [ DeterministicRNN ]
+  model.variational_kwargs.value.features:
+    values: [ 32, 64 ]

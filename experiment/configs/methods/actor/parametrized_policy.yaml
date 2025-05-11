@@ -1,0 +1,8 @@
+policy:
+  desc: Namespace for configuring how to construct the actor's policy
+  agent:
+    desc: Implementation for the Control Policy
+    value: VRNNPolicy
+  agent_kwargs:
+    desc: Keyword arguments for the Policy implementation
+    value: { num_ensemble_members: 10 }  # Independent of Loss!

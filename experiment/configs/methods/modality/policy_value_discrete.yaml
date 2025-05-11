@@ -1,0 +1,36 @@
+modality:
+  desc: Namespace for configuring how to construct the actor's policy
+  name:
+    desc: Name of the modality
+    value:
+      1: Value
+      2: Policy
+      3: Reward
+  likelihood:
+    desc: What model likelihood to use
+    value:
+      1: gaussian
+      2: categorical
+      3: categorical
+  likelihood_kwargs:
+    desc: Keyword arguments to the parametrized likelihood
+    value:
+      1:
+        predict_gaussian_variance: 'standard'  # Standard Normal Value distribution
+      2:
+        temperature: 1.0
+      3:
+        temperature: 1.0
+        num_classes: 2
+  ensemble_method:
+    desc: How to aggregate multiple predicted output-distributions
+    value:
+      1: aggregate
+      2: mixture
+      3: mixture
+  uniform_ensemble:
+    desc: Whether to weight ensemble-members uniformly (True) or to their log-probability (False)
+    value:
+      1: True
+      2: True
+      3: True

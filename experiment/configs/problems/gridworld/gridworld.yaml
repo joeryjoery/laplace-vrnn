@@ -1,0 +1,48 @@
+task:
+  desc: Namespace for configuring the problem to tackle.
+  option:
+    desc: Specify which problem-domain to run the experiment on
+    value:
+      1: gridworld.SquareGrid
+      2: gridworld.SquareGrid
+  option_kwargs:
+    desc: Problem specific keyword arguments to initialize `option`
+    value:
+      1: { n: 5, episode_steps: 15, one_hot_encoding: True, start_bounds: [ 0, 0 ] }
+      2: { n: 5, episode_steps: 15, one_hot_encoding: True, start_bounds: [ 0, 0 ] }
+  task_kwargs:
+    desc: Keyword arguments for sample-size, IO, dimensionality, etc.
+    value:
+      1: { }
+      2: { }
+  task_flags:
+    desc: Specify what the Task is used for.
+    value:
+      1: [producer]
+      2: [evaluation]
+
+evaluator:
+  desc: Namespace for configuring evaluation of output variables
+  problem_seed:
+    desc: Specify PRNG-seed value to independently seed the test-environment setup
+    value: 0
+  artifact_kwargs:
+    desc: Keyword arguments specific to how evaluation artifacts are generated
+    value: {
+      sample_lengths: [ 0, 1, 3, 5, 7, 10, 15, 20, 25, 30, 40, 50, 100, 200 ],
+      num_samples: 128,
+      num_predictions: [ 0, 1, 3, 5, 10, 30 ],
+      resolution: 1000,
+      plot_length: 75,
+      plot_num_episodes: 5,
+      plot_options: [ { 'start': [ 0, 0 ], 'goal': [ 4, 4 ] } ],
+    }
+
+producer:
+  desc: Namespace for configuring generation of example data.
+  data_batch_dimensions:
+    desc: Dimensions for the data-learner to work with
+    value: { data_size: 1, batch_size: 256, length: 100 }
+
+formatter:
+  desc: Namespace for configuring how to format generated data for downstream-use.

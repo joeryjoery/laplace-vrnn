@@ -1,0 +1,25 @@
+modality:
+  desc: Namespace for configuring how to construct the actor's policy
+  name:
+    desc: Name of the modality
+    value:
+      1: Signal y_hat
+  likelihood:
+    desc: What model likelihood to use
+    value:
+      1: gaussian
+  likelihood_kwargs:
+    desc: Keyword arguments to the parametrized likelihood
+    value:
+      1:
+        predict_gaussian_variance: 'bias'  # Independently learn a variance constant
+        log_variance_bounds: [0.001, 5.0]  # Bound exp(variance) for stability
+        log_variance_constant: 0.0  # Shift initialized bias to be on average approximately standard normal
+  ensemble_method:
+    desc: How to aggregate multiple predicted output-distributions
+    value:
+      1: aggregate  # Average the Gaussian Parameters
+  uniform_ensemble:
+    desc: Whether to weight ensemble-members uniformly (True) or to their log-probability (False)
+    value:
+      1: True

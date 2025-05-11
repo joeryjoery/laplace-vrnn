@@ -1,0 +1,7 @@
+# Example/ reference sweep configuration for a grid-search.
+method: grid
+parameters:
+  rng.seed.value:
+    values: [ 0, 1 ]
+  model.recurrent_size.value:
+    values: [ 64, 128 ]

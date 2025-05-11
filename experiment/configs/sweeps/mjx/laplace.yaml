@@ -1,0 +1,16 @@
+method: grid
+parameters:
+  model.variational_method.value:
+    values: [ VariationalRNN ]
+  model.variational_kwargs.value.diagonal:
+    values: [ True, False ]
+  model.variational_kwargs.value.accumulate_precision:
+    values: [ True ]
+  model.variational_kwargs.value.buffer_size:
+    values: [ 1 ]
+  model.variational_kwargs.value.num_features:
+    values: [ 64 ]
+  loss.elbo_kwargs.value.beta:
+    values: [ 0.0001, 0.01 ]
+  loss.elbo_kwargs.value.num_model_samples:
+    values: [ 1, 3, 10 ]

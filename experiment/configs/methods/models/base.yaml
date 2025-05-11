@@ -1,0 +1,29 @@
+model:
+  desc: Namespace for configuring parameters for the agent-model (e.g., Neural-Network Architecture).
+
+  embedding_sizes:
+    desc: Layer sizes for the embedder MLP
+    value: [ 256, 256 ]
+  prediction_sizes:
+    desc: Layer sizes for the prediction MLP
+    value: [ 256, 256, 64 ]
+  simulate_sizes:
+    desc: Layer sizes for the regression/ simulation MLP
+    value: [ 256, 256, 64 ]
+
+  embedding_activation:
+    desc: Activation function for the embedder MLP
+    value: leaky_relu
+  prediction_activation:
+    desc: Activation function for the prediction MLP
+    value: leaky_relu
+  simulate_activation:
+    desc: Activation function for the regression/ simulation MLP
+    value: leaky_relu
+
+  recurrent_core:
+    desc: What type of RNN module to use
+    value: LSTM
+  recurrent_size:
+    desc: Number of hidden units in the recurrent core
+    value: 128

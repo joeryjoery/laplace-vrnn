@@ -1,0 +1,8 @@
+method: grid
+parameters:
+  model.variational_method.value:
+    values: [ VariationalRNN ]
+  model.variational_kwargs.value.diagonal:
+    values: [ True, False ]
+  loss.elbo_kwargs.value.beta:
+    values: [ 0.01 ]
