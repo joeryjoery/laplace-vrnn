@@ -67,6 +67,7 @@ If the arguments aren't properly passed through the script may crash or produce 
 For the fine-tuning experiments, we first need to parse the output directory structure and filter for configs that represent the architecture that we wish to fine-tune, this can be done in the following command
 ```bash
 ./run.sh pipeline/parse_out/extract_tunables.sh ~/out
+# Example output:
 > ~/out/AXME/20231206_085232-c5a410574caa66e7/config.yaml ~/out/AXME/20231206_085301-27c4d3a5327541ea/config.yaml
 > ~/out/AXME/20231206_085145-55eee9dafbf162cb/config.yaml
 > ~/out/AXME/20231206_084945-18345da585df5345/config.yaml ~/out/AXME/20231206_084856-3056025678ac527a/config.yaml
@@ -74,7 +75,7 @@ For the fine-tuning experiments, we first need to parse the output directory str
 The example output shows that the configs are both grouped and separated. 
 Each newline indicates a different group (e.g., different model-size) and within each group there are only config-variations for specific fields (e.g., evaluation-configs which do not influence the training progression, or random-key seeds).
 
-To see exactly how we filter out the configs, see the `pipeline/parse_out/extract_tunables.sh` (TODO; insert link).
+To see exactly how we filter out the configs, see the `pipeline/parse_out/extract_tunables.sh`
 
 ```bash
  ./run.sh pipeline/parse_out/generate_sweeps.sh ~/out \
@@ -141,23 +142,19 @@ Deploy the generated scripts...
 
 Deploy the generated scripts...
 
-### 3) Generating Plots from W&B API
-
-Generating the plots was done interactively in a Jupyter Notebook Environment. See the notebooks in `pipeline/plotting` with the exported W&B data in [TODO; INSERT LINK].
-
 
 # Debugging
 
 DEBUGGING: RUN THIS CMD
 ```bash
 # 1) Run Deterministic sweep:
-./run.sh pipeline/sweep.sh -P configs/combined/debug.txt -C configs/methods/models/deterministic.yam -E joery -N DetTestV2 -S configs/sweeps/debug.yaml -O ~/out/DetTestV2 
+./run.sh pipeline/sweep.sh -P configs/combined/debug.txt -C configs/methods/models/deterministic.yam -E lvrnn -N DetTestV2 -S configs/sweeps/debug.yaml -O ~/out/DetTestV2 
 
 # TODO: Run fully Integrated sweep
 
 # 2) Finetune the sweep with Laplace for 1 run
-./run.sh pipeline/task.sh -P configs/combined/debug.txt -C configs/methods/models/laplace.yaml -S experiment.restore_point.value=/home/joery/out/test/Test/20231215_162112-5f35045f422cda2c/client/checkpoint/10.cp experiment.finetune.value=True
+./run.sh pipeline/task.sh -P configs/combined/debug.txt -C configs/methods/models/laplace.yaml -S experiment.restore_point.value=/home/out/test/Test/20231215_162112-5f35045f422cda2c/client/checkpoint/10.cp experiment.finetune.value=True
 
 # 3) Finetune the sweep with VRNN for 1 run
-./run.sh pipeline/task.sh -P configs/combined/debug.txt -C configs/methods/models/variational.yaml -S experiment.restore_point.value=/home/joery/out/test/Test/20231215_162112-5f35045f422cda2c/client/checkpoint/10.cp experiment.finetune.value=True
+./run.sh pipeline/task.sh -P configs/combined/debug.txt -C configs/methods/models/variational.yaml -S experiment.restore_point.value=/home/out/test/Test/20231215_162112-5f35045f422cda2c/client/checkpoint/10.cp experiment.finetune.value=True
 ```
